@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <title>Personal Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Book List</h1>
+
+<form method="post">
+    <label>
+        <input type="text" name="title" placeholder="Enter book title" />
+    </label>
+    <label>
+        <input type="text" name="author" placeholder="Enter author's name" />
+    </label>
+    <input type="submit" value="Add Book" />
+</form>
+
+<h2 th:unless="${#lists.isEmpty(books)}">Books:</h2>
+<p th:if="${#lists.isEmpty(books)}">No books yet.</p>
+
+<ul>
+    <li th:each="book : ${books}">
+        <span th:text="${book.title}">Title</span> by <span th:text="${book.author}">Author</span>
+    </li>
+</ul>
+</body>
+</html>
